@@ -14,7 +14,7 @@ const loadUser = async () => {
             delete axios.defaults.headers.common["x-auth-token"];
             return
         }
-        const response = await axios.get("https://spai.elliott-project.com/users");
+        const response = await axios.get("https://spit.elliott-project.com/users");
         $('#login').detach()
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
@@ -53,7 +53,7 @@ $('document').ready(async () => {
                 }
             }
             const body = JSON.stringify(formData)
-            const response = await axios.post('https://spai.elliott-project.com/users/login', body, config)
+            const response = await axios.post('https://spit.elliott-project.com/users/login', body, config)
             elt = htmlToElement(`
             <div id="alert" class="py-4 px-8 font-[600] bg-green-600 text-xl rounded-lg text-white">
             Logged in!

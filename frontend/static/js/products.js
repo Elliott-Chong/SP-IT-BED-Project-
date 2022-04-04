@@ -14,7 +14,7 @@ const loadUser = async () => {
             delete axios.defaults.headers.common["x-auth-token"];
             return
         }
-        const response = await axios.get("https://spai.elliott-project.com/users");
+        const response = await axios.get("https://spit.elliott-project.com/users");
         $('#login').detach()
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
@@ -42,7 +42,7 @@ const loadUser = async () => {
 $('document').ready(async () => {
     loadUser()
     let p = $('#products').detach()
-    let response = await axios.get('https://spai.elliott-project.com/product')
+    let response = await axios.get('https://spit.elliott-project.com/product')
     $('#spinner').detach()
     p.appendTo('body')
 

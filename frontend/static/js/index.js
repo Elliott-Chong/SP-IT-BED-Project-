@@ -14,7 +14,7 @@ const loadUser = async () => {
             delete axios.defaults.headers.common["x-auth-token"];
             return
         }
-        const response = await axios.get("https://spai.elliott-project.com/users");
+        const response = await axios.get("https://spit.elliott-project.com/users");
         $('#login').detach()
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
@@ -44,5 +44,5 @@ $('#search-form').submit(async e => {
 
 
 
-const response = await axios.get('https://spai.elliott-project.com')
+const response = await axios.get('https://spit.elliott-project.com')
 console.log(response.data)

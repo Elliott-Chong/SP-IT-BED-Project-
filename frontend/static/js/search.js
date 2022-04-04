@@ -14,7 +14,7 @@ const loadUser = async () => {
             delete axios.defaults.headers.common["x-auth-token"];
             return
         }
-        const response = await axios.get("https://spai.elliott-project.com/users");
+        const response = await axios.get("https://spit.elliott-project.com/users");
         $('#login').detach()
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
@@ -66,7 +66,7 @@ $('document').ready(async () => {
         $('#search-result').text(`Search Results for: ${formData.keyword.replace('%20', ' ')}(${formData.brand.replace('%20', ' ')})`)
     }
     const body = JSON.stringify(formData)
-    let response = await axios.post('https://spai.elliott-project.com/product/search', body, config)
+    let response = await axios.post('https://spit.elliott-project.com/product/search', body, config)
     $('#spinner').detach()
     p.appendTo('body')
     let products = response.data
