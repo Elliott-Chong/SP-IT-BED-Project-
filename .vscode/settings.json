@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol"
+            },
+            "previewLimit": 50,
+            "server": "192.168.50.210",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "SPIT",
+            "database": "spit",
+            "username": "elliott",
+            "password": "elle1412"
+        }
+    ]
+}
