@@ -14,7 +14,7 @@ const loadUser = async () => {
             delete axios.defaults.headers.common["x-auth-token"];
             return
         }
-        const response = await axios.get("http://localhost:5000/users");
+        const response = await axios.get("https://spai.elliott-project.com/users");
         $('#login').detach()
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
@@ -49,8 +49,8 @@ $('document').ready(async () => {
     let p = $('#container').detach()
     let id = window.location.href.split('?')[1].split('=')[1]
     try {
-        const response = await axios.get(`http://localhost:5000/product/${id}`)
-        const reviewsResponse = await axios.get(`http://localhost:5000/product/${id}/review`)
+        const response = await axios.get(`https://spai.elliott-project.com/product/${id}`)
+        const reviewsResponse = await axios.get(`https://spai.elliott-project.com/product/${id}/review`)
         let allReviews = reviewsResponse.data
         allReviews = allReviews.sort((a, b) => {
             return new Date(b.created_at) - new Date(a.created_at)
@@ -148,7 +148,7 @@ $('document').ready(async () => {
                 }
                 const body = JSON.stringify(formData)
                 try {
-                    await axios.post(`http://localhost:5000/product/${id}/review`, body, config)
+                    await axios.post(`https://spai.elliott-project.com/product/${id}/review`, body, config)
                     window.location.reload()
                 } catch (error) {
                     console.log(error)

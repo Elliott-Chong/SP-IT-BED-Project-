@@ -13,5 +13,6 @@
             "username": "elliott",
             "password": "elle1412"
         }
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
