@@ -5,7 +5,7 @@ const util = require('util')
 const { body, validationResult } = require('express-validator')
 const query = util.promisify(connection.query).bind(connection)
 const app = express();
-const PORT = 5000;
+const PORT = 5002;
 app.use(
     cors()
 );
@@ -43,5 +43,5 @@ app.get("/interest/", async (req, res) => {
 })
 
 app.listen(process.env.PORT || PORT, () =>
-    console.log("Server Running on http://localhost:5000")
+    console.log("Server Running on http://localhost:5002")
 );
