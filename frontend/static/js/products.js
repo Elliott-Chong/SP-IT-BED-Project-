@@ -1,3 +1,5 @@
+let user;
+
 function htmlToElement(html) {
     var template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
@@ -15,10 +17,16 @@ const loadUser = async () => {
             return
         }
         const response = await axios.get("https://spit.elliott-project.com/users");
+        user = response.data
         $('#login').detach()
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
         ))
+        if (user.type === 'Admin') {
+            document.querySelector('#idk').appendChild(htmlToElement(
+                `<li><a id="new_product" href="new_product.html">Add new product</a></li>`
+            ))
+        }
         document.querySelector('#logout').onclick = () => {
             localStorage.removeItem('token')
             elt = htmlToElement(`
@@ -26,7 +34,6 @@ const loadUser = async () => {
                     Logged out!
                 </div>
                 `)
-            console.log(elt)
             document.querySelector('#alert-div').appendChild(elt)
             setTimeout(() => {
                 document.querySelector('#alert-div').removeChild(elt)

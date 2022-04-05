@@ -13,7 +13,7 @@ const query = util.promisify(connection.query).bind(connection)
 router.post('/',
     body('username', 'Please provide a valid username.').not().isEmpty(),
     body('email', 'Please provide a valid email address.').isEmail(),
-    body('contact', 'Please provide a valid contact number.').not().isEmpty().isNumeric(),
+    body('contact', 'Please provide a valid contact number.').not().isEmpty().isNumeric().isLength({ max: 8, min: 8 }),
     body('password', 'Password must be at least 6 digits long.').isLength({ min: 6 }),
     async (req, res) => {
         const errors = validationResult(req);

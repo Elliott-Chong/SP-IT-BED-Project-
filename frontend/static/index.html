@@ -1,35 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SP IT!</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+      integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script type="module" src="./js/index.js" defer></script>
-    <link rel="stylesheet" href="output.css">
-</head>
-<body class="overflow-hidden font-poppins">
-    <nav class="flex py-5 px-8 font-[600] text-xl items-center absolute z-10 w-full bg-white top-0">
-        <h1 class="text-5xl"><span class="text-red-600">SP</span> IT!</h1>
-        <ul id="idk" class="flex space-x-4 ml-8">
-            <li><a href="products.html">Products</a></li>
-            <li><a id="login" href="login.html">Login</a></li>
-        </ul>
-        <div class="ml-auto">
-            <form id="search-form" class="font-[600] space-x-4">
-                <input placeholder="Brand" type="text" class="w-40 p-2 border-2 rounded-md" name="brand" id="brand">
-                <input placeholder="Keyword" type="text" class="w-40 p-2 border-2 rounded-md" name="keyword" id="keyword">
-                <button type="submit" class="font-[600] text-white rounded-md bg-red-600 py-2 px-4">Search</button>
-            </form>
-        </div>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="overflow-hidden font-poppins">
+    <nav
+      class="flex py-5 px-8 font-[600] text-xl items-center absolute z-10 w-full bg-white top-0"
+    >
+      <h1 class="text-5xl"><span class="text-red-600">SP</span> IT!</h1>
+      <ul id="idk" class="flex space-x-4 ml-8">
+        <li><a href="products.html">Products</a></li>
+        <li><a id="login" href="login.html">Login</a></li>
+      </ul>
+      <div class="ml-auto">
+        <form id="search-form" class="font-[600] space-x-4">
+          <input
+            placeholder="Brand"
+            type="search"
+            class="w-40 p-2 border-2 rounded-md"
+            name="brand"
+            id="brand"
+          />
+          <input
+            placeholder="Keyword"
+            type="search"
+            class="w-40 p-2 border-2 rounded-md"
+            name="keyword"
+            id="keyword"
+          />
+          <button
+            type="submit"
+            class="font-[600] text-white rounded-md bg-red-600 py-2 px-4"
+          >
+            Search
+          </button>
+        </form>
+      </div>
     </nav>
-    <div id='alert-div' class="absolute bottom-4 right-4 space-y-2"></div>
+    <div id="alert-div" class="absolute bottom-4 right-4 space-y-2"></div>
 
     <div class="flex justify-center relative items-center h-full">
-        <img class="object-cover" src="./images/desk.jpg" alt="desk image">
-        <h1 class="text-7xl text-white font-[600] absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Welcome to SP IT!</h1>
+      <img class="object-cover" src="./images/desk.jpg" alt="desk image" />
+      <h1
+        class="text-7xl text-white font-[600] absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
+        Welcome to SP IT!
+      </h1>
     </div>
-</body>
+  </body>
 </html>

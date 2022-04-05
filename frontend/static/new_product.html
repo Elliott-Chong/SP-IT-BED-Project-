@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SP IT!</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+      integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="output.css" />
+    <script src="./js/new_product.js" defer></script>
+  </head>
+  <body class="font-poppins h-screen">
+    <nav
+      class="flex py-5 px-8 font-[600] text-xl items-center w-full absolute top-0"
+    >
+      <h1 class="text-5xl">
+        <a href="index.html"><span class="text-red-600">SP</span> IT!</a>
+      </h1>
+      <ul id="idk" class="flex space-x-4 ml-8">
+        <li><a href="products.html">Products</a></li>
+        <li id="login"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div id="alert-div" class="absolute bottom-4 right-4 space-y-2"></div>
+
+    <div class="flex h-full justify-center items-center font-[600]">
+      <div class="flex flex-col bg-amber-900 rounded-md">
+        <div class="bg-amber-700 p-5 rounded-md">
+          <h1 class="text-2xl">
+            <span class="text-white">Add new product</span>
+          </h1>
+        </div>
+        <div class="p-5">
+          <form class="flex flex-col space-y-6 text-white">
+            <div class="flex flex-col space-y-2">
+              <label for="name">Name</label>
+              <input
+                [data-input]
+                required
+                type="text"
+                name="name"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="name"
+                placeholder="Name of product"
+              />
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <label for="brand">Brand</label>
+              <input
+                [data-input]
+                required
+                type="text"
+                name="brand"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="brand"
+                placeholder="Brand"
+              />
+            </div>
+            <div class="flex flex-col space-y-2">
+              <label for="price">Price</label>
+              <input
+                [data-input]
+                required
+                type="number"
+                min="0.00"
+                max="100000.00"
+                name="price"
+                step="0.01"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="price"
+                placeholder="Price"
+              />
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <label for="category">Category</label>
+              <select
+                [data-input]
+                name="categoryid"
+                id="category"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+              ></select>
+            </div>
+
+            <div class="flex flex-col space-y-2">
+              <label for="description">Description</label>
+              <textarea
+                [data-input]
+                required
+                type="text"
+                name="description"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="description"
+                placeholder="Describe the product"
+              ></textarea>
+            </div>
+
+            <div class="flex justify-between">
+              <button
+                type="submit"
+                class="py-2 rounded-md px-4 font-[600] shadow-md bg-green-600"
+              >
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

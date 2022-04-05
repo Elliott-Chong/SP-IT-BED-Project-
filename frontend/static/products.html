@@ -9,12 +9,14 @@
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
+      defer
     ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
       integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      defer
     ></script>
     <link rel="stylesheet" href="output.css" />
     <script src="./js/products.js" defer></script>
@@ -26,9 +28,10 @@
       </h1>
       <ul id="idk" class="flex space-x-4 ml-8">
         <li><a href="products.html">Products</a></li>
-        <li><a id="login" href="login.html">Login</a></li>
+        <li id="login"><a href="login.html">Login</a></li>
       </ul>
     </nav>
+
     <div id="alert-div" class="absolute bottom-4 right-4 space-y-2"></div>
 
     <div id="spinner" class="w-full flex justify-center">
