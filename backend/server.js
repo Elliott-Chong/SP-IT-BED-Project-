@@ -6,6 +6,7 @@ const { body, validationResult } = require('express-validator')
 const query = util.promisify(connection.query).bind(connection)
 const app = express();
 const PORT = 5002;
+const auth = require('./authMiddleware')
 app.use(
     cors()
 );
@@ -23,6 +24,8 @@ app.post("/interest/:userid", body("categoryids", 'Please enter valid categoryid
     const userid = req.params.userid
     const { categoryids } = req.body
     try {
+        await query("DELETE FROM Interests WHERE userid=?", userid)
+        if (categoryids == '') return res.status(200).send('no categories')
         for (let categoryid of categoryids.split(',')) {
             await query("INSERT INTO Interests (userid, categoryid) VALUES (?, ?)", [userid, categoryid])
         }
@@ -32,10 +35,25 @@ app.post("/interest/:userid", body("categoryids", 'Please enter valid categoryid
         return res.status(500).send('Internal Server Error')
     }
 })
-app.get("/interest/", async (req, res) => {
+app.get("/interest/:userid", auth, async (req, res) => {
+    const userid = req.params.userid
     try {
-        let response = await query("SELECT * FROM Interests;")
+        let response = await query("SELECT userid, categoryid, Categories.name FROM Interests join Categories on Categories.id=Interests.categoryid where userid=?;", userid)
         return res.status(200).json(response)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send('Internal Server Error')
+    }
+})
+
+app.get("/suggested", auth, async (req, res) => {
+    try {
+        let finalRes = []
+        let prefCats = await query("SELECT * FROM Interests where userid=?", req.user.id)
+        for (let category of prefCats) {
+            finalRes.push(...await query("SELECT * FROM Products where categoryid=?", [category.categoryid]))
+        }
+        return res.status(200).json(finalRes)
     } catch (error) {
         console.log(error)
         return res.status(500).send('Internal Server Error')

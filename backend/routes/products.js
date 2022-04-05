@@ -4,14 +4,15 @@ const util = require('util')
 const { body, validationResult } = require('express-validator')
 const query = util.promisify(connection.query).bind(connection)
 const auth = require('../authMiddleware')
+const adminAuth = require('../adminAuth')
 
 
-router.post('/',
+router.post('/', adminAuth,
     body('name', "Please provide a valid name.").not().isEmpty(),
     body('description', 'Please provide a valid description').not().isEmpty(),
     body('categoryid', 'Please provide a valid categoryid').isInt(),
     body("brand", 'Please provide a valid brand').not().isEmpty(),
-    body('price', 'Please provide a valid price').isNumeric().not().isEmpty(),
+    body('price', 'Please provide a valid price').not().isEmpty(),
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -117,3 +118,5 @@ router.get('/:id/review',
 
 
 module.exports = router
+
+
