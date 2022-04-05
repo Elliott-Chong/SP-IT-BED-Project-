@@ -19,6 +19,7 @@ const loadUser = async () => {
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
         ))
+
         document.querySelector('#logout').onclick = () => {
             localStorage.removeItem('token')
             elt = htmlToElement(`
@@ -58,7 +59,9 @@ $('document').ready(async () => {
         let product = response.data
         let averageRating = 0
         for (let review of allReviews) averageRating += review.rating
-        averageRating = averageRating / allReviews.length
+        if (allReviews.length > 0) {
+            averageRating = averageRating / allReviews.length
+        }
         $('#spinner').detach()
         p.appendTo('body')
         let elt1 = htmlToElement(

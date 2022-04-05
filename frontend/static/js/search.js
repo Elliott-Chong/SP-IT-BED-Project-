@@ -19,6 +19,11 @@ const loadUser = async () => {
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
         ))
+        if (response.data.type === 'Admin') {
+            document.querySelector('#idk').appendChild(htmlToElement(
+                `<li><a id="new_product" href="new_product.html">Add new product</a></li>`
+            ))
+        }
         document.querySelector('#logout').onclick = () => {
             localStorage.removeItem('token')
             elt = htmlToElement(`

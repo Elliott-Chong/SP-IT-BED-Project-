@@ -1,5 +1,6 @@
 let user;
 
+
 function htmlToElement(html) {
     var template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
@@ -22,11 +23,7 @@ const loadUser = async () => {
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
         ))
-        if (user.type === 'Admin') {
-            document.querySelector('#idk').appendChild(htmlToElement(
-                `<li><a id="new_product" href="new_product.html">Add new product</a></li>`
-            ))
-        }
+
         document.querySelector('#logout').onclick = () => {
             localStorage.removeItem('token')
             elt = htmlToElement(`
@@ -56,13 +53,9 @@ $('document').ready(async () => {
         return
     }
     try {
-        const response = await axios.get('https://spit.elliott-project.com/category')
-        for (let category of response.data) {
-            let option = document.createElement('option')
-            option.innerText = category.category
-            option.setAttribute('value', category.categoryid)
-            document.querySelector('select').appendChild(option)
-        }
+
+
+
 
         document.querySelector('form').onsubmit = async (e) => {
             e.preventDefault()
@@ -70,25 +63,39 @@ $('document').ready(async () => {
             document.querySelectorAll('input').forEach(input => {
                 formData[input.name] = input.value
             })
-            document.querySelectorAll('select').forEach(input => {
-                formData[input.name] = input.value
-            })
+
             document.querySelectorAll('textarea').forEach(input => {
                 formData[input.name] = input.value
             })
-            formData.price = new Intl.NumberFormat(undefined, {
-                style: 'currency',
-                currency: 'SGD'
-            }).format(formData.price).slice(4)
             const config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }
+            try {
+                await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${formData.category}`)
+            } catch (error) {
+                for (let alert of document.querySelector('#alert-div').children) {
+                    if (alert.innerText == 'Invalid word') {
+                        return
+                    }
+                }
+                elt = htmlToElement(`
+                <div id="alert" class="py-4 px-8 font-[600] bg-red-600 text-xl rounded-lg text-white">
+                    Invalid word
+                </div>
+                `)
+                document.querySelector('#alert-div').appendChild(elt)
+                setTimeout(() => {
+                    document.querySelector('#alert-div').removeChild(elt)
+                }, 3000)
+                return
+            }
             const body = JSON.stringify(formData)
+            console.log(body)
             try {
 
-                await axios.post('https://spit.elliott-project.com/product', body, config)
+                await axios.post('https://spit.elliott-project.com/category', body, config)
                 elt = htmlToElement(`
                 <div id="alert" class="py-4 px-8 font-[600] bg-green-600 text-xl rounded-lg text-white">
                 Success!

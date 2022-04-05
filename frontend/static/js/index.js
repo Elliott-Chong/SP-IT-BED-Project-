@@ -19,6 +19,7 @@ const loadUser = async () => {
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
         ))
+
         document.querySelector('#logout').onclick = () => {
             localStorage.removeItem('token')
             window.location.reload()

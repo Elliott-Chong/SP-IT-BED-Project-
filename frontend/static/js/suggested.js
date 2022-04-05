@@ -25,17 +25,8 @@ const loadUser = async () => {
         document.querySelector('#idk').appendChild(htmlToElement(
             `<li><a id="preference" href="preference.html">Update preference</a></li>`
         ))
-        document.querySelector('#idk').appendChild(htmlToElement(
-            `<li><a id="suggested_listings" href="suggested.html">Suggested listings</a></li>`
-        ))
-        if (user.type === 'Admin') {
-            document.querySelector('#idk').appendChild(htmlToElement(
-                `<li><a id="new_product" href="new_product.html">Add new product</a></li>`
-            ))
-            document.querySelector('#idk').appendChild(htmlToElement(
-                `<li><a id="new_category" href="new_category.html">Add new category</a></li>`
-            ))
-        }
+
+
         document.querySelector('#logout').onclick = () => {
             localStorage.removeItem('token')
             elt = htmlToElement(`
@@ -56,13 +47,23 @@ const loadUser = async () => {
 
 
 $('document').ready(async () => {
-    loadUser()
+    await loadUser()
+    if (!user) {
+        window.location.href = 'login.html'
+    }
     let p = $('#products').detach()
-    let response = await axios.get('https://spit.elliott-project.com/product')
+    let response = await axios.get('https://spit.elliott-project.com/suggested')
     $('#spinner').detach()
     p.appendTo('body')
 
     let products = response.data
+    if (products.length == 0) {
+        let item = document.createElement('h1')
+        document.querySelector("#products").classList.add('justify-center')
+        item.className = 'text-center self-center text-xl'
+        item.innerHTML = "Please update your preferences <a class='text-blue-500' href='preference.html'>here</a> in order for us to suggest listings for you!"
+        document.querySelector('#products').appendChild(item)
+    }
     products.forEach((product) => {
         let item = htmlToElement(`
         <div id="item" class="flex mx-2 flex-col h-fit border-2 justify-center text-center space-y-4 w-72 items-center p-4">
