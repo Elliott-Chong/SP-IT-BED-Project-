@@ -1,48 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SP IT!</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+      integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="./js/register.js" defer></script>
-    <link rel="stylesheet" href="output.css">
-</head>
-<body class="font-poppins h-screen">
-    <nav class="flex py-5 px-8 font-[600] text-xl items-center absolute w-full top-0">
-        <h1 class="text-5xl"><a href="index.html"><span class="text-red-600">SP</span> IT!</a></h1>
-        <ul id="idk" class="flex space-x-4 ml-8">
-            <li><a href="products.html">Products</a></li>
-            <li><a id="login" href="login.html">Login</a></li>
-        </ul>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="font-poppins h-screen">
+    <nav
+      class="flex py-5 px-8 font-[600] text-xl items-center absolute w-full top-0"
+    >
+      <h1 class="text-5xl">
+        <a href="index.html"><span class="text-red-600">SP</span> IT!</a>
+      </h1>
+      <ul id="idk" class="flex space-x-4 ml-8">
+        <li><a href="products.html">Products</a></li>
+        <li id="login"><a href="login.html">Login</a></li>
+      </ul>
     </nav>
-    <div id='alert-div' class="absolute bottom-4 right-4 space-y-2">
-    </div>
+    <div id="alert-div" class="absolute bottom-4 right-4 space-y-2"></div>
     <div class="flex h-full justify-center items-center font-[600]">
-        <div class="flex flex-col bg-zinc-600  rounded-md">
-            <div class="bg-zinc-800 p-5 rounded-md">
-                <h1 class="text-5xl"><span class="text-red-600">SP</span> <span class="text-white">IT!</span></h1>
+      <div class="flex flex-col bg-zinc-600 rounded-md">
+        <div class="bg-zinc-800 p-5 rounded-md">
+          <h1 class="text-5xl">
+            <span class="text-red-600">SP</span>
+            <span class="text-white">IT!</span>
+          </h1>
+        </div>
+        <div class="p-5">
+          <form class="flex flex-col space-y-6 text-white">
+            <div class="flex flex-col space-y-2">
+              <label for="username">Username</label>
+              <input
+                required
+                type="text"
+                name="username"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="username"
+                placeholder="Username"
+              />
             </div>
-            <div class="p-5">
-                <form class="flex flex-col space-y-6 text-white">
-                    <div class="flex flex-col space-y-2">
-                        <label for="username">Username</label>
-                        <input required type="text" name="username" class="p-2 font-[600] shadow-lg text-black rounded-md" id="username" placeholder="Username">
-                    </div>
 
-                    <div class="flex flex-col space-y-2">
-                        <label for="contact">Contact</label>
-                        <input required type="text" name="contact" class="p-2 font-[600] shadow-lg text-black rounded-md" id="contact" placeholder="Contact">
-                    </div>
+            <div class="flex flex-col space-y-2">
+              <label for="contact">Contact</label>
+              <input
+                required
+                type="text"
+                name="contact"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="contact"
+                placeholder="Contact"
+              />
+            </div>
 
-                    <div class="flex flex-col space-y-2">
-                        <label for="email">Email</label>
-                        <input required type="email" name="email" class="p-2 font-[600] shadow-lg text-black rounded-md" id="email" placeholder="Email">
-                    </div>
+            <div class="flex flex-col space-y-2">
+              <label for="email">Email</label>
+              <input
+                required
+                type="email"
+                name="email"
+                class="p-2 font-[600] shadow-lg text-black rounded-md"
+                id="email"
+                placeholder="Email"
+              />
+            </div>
 
-                    <!-- <div class="flex flex-col space-y-2">
+            <!-- <div class="flex flex-col space-y-2">
                         <label for="type">Type</label>
                         <select name="type" id="type" class="py-2 px-4 rounded-md bg-white shadow-lg text-black font-[600]">
                             <option value="customer">Customer</option>
@@ -50,23 +86,49 @@
                         </select>
                     </div> -->
 
-                    <div class="flex flex-col space-y-2">
-                        <label for="password">Password</label>
-                        <input required type="password" class="p-2 text-black font-[600] shadow-lg rounded-md" name="password" id="password" placeholder="Password">
-                    </div>
-
-                    <div class="flex flex-col space-y-2">
-                        <label for="password1">Confirm password</label>
-                        <input required type="password" class="p-2 text-black font-[600] shadow-lg rounded-md" name="password1" id="password1" placeholder="Re-enter password">
-                    </div>
-
-                    <div class="flex justify-between">
-                        <button type="submit" class="py-2 rounded-md px-4 font-[600] shadow-md bg-blue-600">Register</button>
-                        <a href="login.html"><button type='button' class="py-2 px-4 rounded-md shadow-md font-[600] bg-slate-500">Login</button></a>
-                    </div>
-                </form>
+            <div class="flex flex-col space-y-2">
+              <label for="password">Password</label>
+              <input
+                required
+                type="password"
+                class="p-2 text-black font-[600] shadow-lg rounded-md"
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
             </div>
+
+            <div class="flex flex-col space-y-2">
+              <label for="password1">Confirm password</label>
+              <input
+                required
+                type="password"
+                class="p-2 text-black font-[600] shadow-lg rounded-md"
+                name="password1"
+                id="password1"
+                placeholder="Re-enter password"
+              />
+            </div>
+
+            <div class="flex justify-between">
+              <button
+                type="submit"
+                class="py-2 rounded-md px-4 font-[600] shadow-md bg-blue-600"
+              >
+                Register
+              </button>
+              <a href="login.html"
+                ><button
+                  type="button"
+                  class="py-2 px-4 rounded-md shadow-md font-[600] bg-slate-500"
+                >
+                  Login
+                </button></a
+              >
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

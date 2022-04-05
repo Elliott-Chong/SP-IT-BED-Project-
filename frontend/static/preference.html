@@ -16,11 +16,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="./js/search.js" defer></script>
     <link rel="stylesheet" href="output.css" />
+    <script src="./js/preference.js" defer></script>
   </head>
   <body class="font-poppins h-screen">
-    <nav class="flex py-5 px-8 font-[600] text-xl items-center w-full">
+    <nav
+      class="flex py-5 px-8 font-[600] text-xl items-center w-full absolute top-0"
+    >
       <h1 class="text-5xl">
         <a href="index.html"><span class="text-red-600">SP</span> IT!</a>
       </h1>
@@ -29,17 +31,33 @@
         <li id="login"><a href="login.html">Login</a></li>
       </ul>
     </nav>
-    <div id="spinner" class="w-full flex justify-center">
-      <img src="./images/spinner.gif" alt="" />
-    </div>
-    <div id="alert-div" class="absolute bottom-4 right-4 space-y-2"></div>
-    <h1
-      id="search-result"
-      class="text-center font-[600] text-stone-500 text-4xl"
-    >
-      Search Results:
-    </h1>
 
-    <div id="products" class="flex p-8 h-full font-[600] flex-wrap"></div>
+    <div id="alert-div" class="absolute bottom-4 right-4 space-y-2"></div>
+
+    <div class="flex h-full justify-center items-center font-[600]">
+      <div class="flex flex-col bg-emerald-500 rounded-md w-[25%]">
+        <div class="bg-emerald-700 p-5 rounded-md">
+          <h1 class="text-2xl">
+            <span class="text-white"
+              >Click on categories that you are interested in!</span
+            >
+          </h1>
+        </div>
+        <div class="p-5">
+          <form class="flex flex-col space-y-6 text-white">
+            <div id="wrapper" class="grid grid-cols-3 gap-4"></div>
+
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="py-2 rounded-md px-4 font-[600] shadow-md bg-emerald-800"
+              >
+                Confirm
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
