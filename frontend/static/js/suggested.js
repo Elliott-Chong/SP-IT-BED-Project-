@@ -51,6 +51,9 @@ $('document').ready(async () => {
     if (!user) {
         window.location.href = 'login.html'
     }
+    if (user.type === 'Admin') {
+        window.location.href = 'products.html'
+    }
     let p = $('#products').detach()
     let response = await axios.get('https://spit.elliott-project.com/suggested')
     $('#spinner').detach()

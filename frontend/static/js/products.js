@@ -22,12 +22,7 @@ const loadUser = async () => {
         document.querySelector('#idk').appendChild(htmlToElement(
             `<span id='logout' class='cursor-pointer'>Log out</span>`
         ))
-        document.querySelector('#idk').appendChild(htmlToElement(
-            `<li><a id="preference" href="preference.html">Update preference</a></li>`
-        ))
-        document.querySelector('#idk').appendChild(htmlToElement(
-            `<li><a id="suggested_listings" href="suggested.html">Suggested listings</a></li>`
-        ))
+
         if (user.type === 'Admin') {
             document.querySelector('#idk').appendChild(htmlToElement(
                 `<li><a id="new_product" href="new_product.html">Add new product</a></li>`

@@ -44,6 +44,9 @@ $('document').ready(async () => {
     if (!user) {
         window.location.href = 'login.html'
     }
+    if (user.type === 'Admin') {
+        window.location.href = 'products.html'
+    }
     preferredCats = {}
     const response = await axios.get('https://spit.elliott-project.com/category')
     const preferred = await axios.get('https://spit.elliott-project.com/interest/' + user.userid)
