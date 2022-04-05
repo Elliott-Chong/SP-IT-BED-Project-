@@ -66,7 +66,7 @@ $('document').ready(async () => {
             document.querySelector('#alert-div').appendChild(elt)
             setTimeout(() => {
                 document.querySelector('#alert-div').removeChild(elt)
-                window.location.href = 'products.html'
+                window.location.href = 'login.html'
             }, 1000)
         } catch (error) {
             console.log(error)
