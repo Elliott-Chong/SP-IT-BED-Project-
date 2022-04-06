@@ -12,7 +12,7 @@ app.use(
 );
 
 app.use(express.json({ extended: false }));
-
+app.use(express.static('public'))
 
 app.get("/", (req, res) => res.send("SPIT API running"));
 
