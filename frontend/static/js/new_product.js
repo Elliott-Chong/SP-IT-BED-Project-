@@ -66,29 +66,55 @@ $('document').ready(async () => {
 
         document.querySelector('form').onsubmit = async (e) => {
             e.preventDefault()
-            let formData = {}
+            let formData = new FormData()
+            const fileData = document.querySelector('input[type="file"]')
+            console.log(fileData.files[0])
+            if (fileData.files[0] && document.querySelector('#img_url').value !== '') {
+                for (let alert of document.querySelector('#alert-div').children) {
+                    if (alert.innerText == 'Please only enter either an image source or an image file.') {
+                        return
+                    }
+                }
+                elt = htmlToElement(`
+                <div id="alert" class="py-4 px-8 font-[600] bg-red-600 text-xl rounded-lg text-white">
+                    Please only enter either an image source or an image file.
+                </div>
+                `)
+                document.querySelector('#alert-div').appendChild(elt)
+
+                setTimeout(() => {
+                    document.querySelector('#alert-div').removeChild(elt)
+                }, 1000)
+                return
+            }
+            formData.append('myImage', fileData.files[0])
             document.querySelectorAll('input').forEach(input => {
-                formData[input.name] = input.value
+                if (input.name === 'myImage') { }
+                else if (input.name === 'price') {
+                    formData.append(input.name, new Intl.NumberFormat(undefined, {
+                        style: 'currency',
+                        currency: 'SGD'
+                    }).format(input.value).slice(4))
+                }
+                else {
+
+                    formData.append(input.name, input.value)
+                }
             })
             document.querySelectorAll('select').forEach(input => {
-                formData[input.name] = input.value
+                formData.append(input.name, input.value)
             })
             document.querySelectorAll('textarea').forEach(input => {
-                formData[input.name] = input.value
+                formData.append(input.name, input.value)
             })
-            formData.price = new Intl.NumberFormat(undefined, {
-                style: 'currency',
-                currency: 'SGD'
-            }).format(formData.price).slice(4)
             const config = {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                 }
             }
-            const body = JSON.stringify(formData)
             try {
 
-                await axios.post('https://spit.elliott-project.com/product', body, config)
+                await axios.post('https://spit.elliott-project.com/product', formData, config)
                 elt = htmlToElement(`
                 <div id="alert" class="py-4 px-8 font-[600] bg-green-600 text-xl rounded-lg text-white">
                 Success!
